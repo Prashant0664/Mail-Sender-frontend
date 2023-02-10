@@ -18,7 +18,7 @@ function App() {
     if (!data.name || !data.password || !data.gmail || !data.tgmail || !data.content || !data.subject) {
       const notify = () => toast('PLEASE FILL ALL REQUIRED CREDENTIALS');
       notify();
-      alert("Please fill all required credentials")
+      alert("Please fill all required credentials!")
       return
     };
 
