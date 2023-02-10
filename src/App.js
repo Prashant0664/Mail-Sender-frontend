@@ -25,7 +25,7 @@ function App() {
     try {
       const notify = () => toast('PLEASE FILL ALL REQUIRED CREDENTIALS');
       notify();
-      const url = `http://localhost:5000/api/v1/signup`;
+      const url = `https://mail-senderv1api.onrender.com/api/v1/signup`;
       const res = await fetch(url, {
         method: 'POST',
         headers: {

@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
 import toast, { Toaster } from 'react-hot-toast';
-const rootUrl = 'http://localhost:5000';
+const rootUrl = 'https://mail-senderv1api.onrender.com';
 function Sender() {
 
 
