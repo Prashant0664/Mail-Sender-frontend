@@ -15,7 +15,7 @@ function App() {
   })
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!data.name || !data.password || !data.gmail || !data.tgmail || !data.content || !data.subject || (9 === 9)) {
+    if (!data.name || !data.password || !data.gmail || !data.tgmail || !data.content || !data.subject) {
       const notify = () => toast('PLEASE FILL ALL REQUIRED CREDENTIALS');
       notify();
       alert("Please fill all required credentials")
@@ -23,8 +23,8 @@ function App() {
     };
 
     try {
-      const notify = () => toast('PLEASE FILL ALL REQUIRED CREDENTIALS');
-      notify();
+      // const notify = () => toast('PLEASE FILL ALL REQUIRED CREDENTIALS');
+      // notify();
       const url = `https://mail-senderv1api.onrender.com/api/v1/signup`;
       const res = await fetch(url, {
         method: 'POST',
