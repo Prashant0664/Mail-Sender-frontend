@@ -33,7 +33,7 @@ function App() {
         },
         body: JSON.stringify(data),
       });
-      notify();
+      // notify();
       alert("MAIL SENT SUCCESSFULLY")
     } catch (error) {
       alert("SOMETHING WENT WRONG! PLEASE RECHECK YOUR CREDENTIALS")
