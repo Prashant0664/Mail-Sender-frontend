@@ -4,8 +4,6 @@ import toast, { Toaster } from 'react-hot-toast';
 const rootUrl = 'http://localhost:5000';
 function App() {
 
-  //  notify = () => toast('Your Mail will be delievered if you have entered all credentials right!');
-  
   const [data, setName] = React.useState({
     name: "",
     gmail: "",
@@ -15,47 +13,37 @@ function App() {
     password: "",
     age: true,
   })
-  const notify = () => toast('PLEASE FILL ALL REQUIRED CREDENTIALS');
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!data.name || !data.password || !data.gmail || !data.tgmail || !data.content||!data.subject||(9===9)){
+    if (!data.name || !data.password || !data.gmail || !data.tgmail || !data.content || !data.subject || (9 === 9)) {
       const notify = () => toast('PLEASE FILL ALL REQUIRED CREDENTIALS');
       notify();
       alert("Please fill all required credentials")
-      return};
-      
-      try {
-        const notify = () => toast('PLEASE FILL ALL REQUIRED CREDENTIALS');
+      return
+    };
+
+    try {
+      const notify = () => toast('PLEASE FILL ALL REQUIRED CREDENTIALS');
       notify();
-        const url = `http://localhost:5000/api/v1/signup`;
-        // const url = `/api/v1/auth/login`;
-        const res=await fetch(url, {
-          method: 'POST',
-          headers: {
-            'Content-type': 'application/json',
-          },
-          body: JSON.stringify(data),
-        });
-        // console.log("<<<<<----");
-        notify();
-        // console.log(res)
-        alert("MAIL SENT SUCCESSFULLY")
-        // notify();
-        // console.log("----");
-        // const {datas2}=await axios.post(url, data);
-        // console.log(datas2)
-      } catch (error) {
-      const notify = () => toast(error);
+      const url = `http://localhost:5000/api/v1/signup`;
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      notify();
+      alert("MAIL SENT SUCCESSFULLY")
+    } catch (error) {
       alert("SOMETHING WENT WRONG! PLEASE RECHECK YOUR CREDENTIALS")
       console.log(error);
     }
   };
   const [isActive, changeL] = React.useState(false)
-  const [isActiveS, changeS] = React.useState(false)
   return (
     <div className="App" >
-      
+
       <div className="from-box">
         <div className={isActive ? "show-ins" : "hide"}>
           <div className='go-back' onClick={() => changeL(!isActive)}>Go Back</div>
@@ -64,7 +52,7 @@ function App() {
           CLICK <b> GET APP PASSWORD BELOW TWO-STEP VERIFICTION</b> to get your unique password.<br />Happy Mailing!!
         </div>
 
-        <form className={isActive?"hide":"from-box"} method ="POST">
+        <form className={isActive ? "hide" : "from-box"} method="POST">
           <label className='form-label'>
             Your Name :
             <br />
@@ -75,7 +63,7 @@ function App() {
               onChange={(e) => { setName(ev => ({ ...ev, name: e.target.value })) }}
               className='form-input' />
           </label>
-            
+
           <br />
           <label className='form-label'>
             Your Gmail :
@@ -133,19 +121,19 @@ function App() {
           <br />
 
           <label className='form-label'>
-            Your AGE greater than 18yrs? 
+            Your AGE greater than 18yrs?
             <input
               type="checkbox"
               checked={data.age}
               onChange={(e) => { setName(ev => ({ ...ev, age: !data.age })) }}
-              />
+            />
           </label>
           <br />
           <input type="Submit" value="SUBMIT" readOnly className='submit-btn' onClick={handleSubmit} />
-          </form>
-          
-      
-          <Toaster
+        </form>
+
+
+        <Toaster
           toastOptions={{
             className: '',
             style: {
@@ -156,13 +144,8 @@ function App() {
               textAlign: "center"
             },
           }}
-          />
+        />
       </div>
-
-
-      {/* FOR ADMIN SIDE */}
-
-
     </div>
   );
 }

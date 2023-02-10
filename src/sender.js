@@ -4,8 +4,7 @@ import toast, { Toaster } from 'react-hot-toast';
 const rootUrl = 'http://localhost:5000';
 function Sender() {
 
-  //  notify = () => toast('Your Mail will be delievered if you have entered all credentials right!');
-  
+
   const [data, setName] = React.useState({
     name: "",
     gmail: "",
@@ -13,38 +12,37 @@ function Sender() {
     subject: "",
     phone: "",
   })
-  
+
   const handleSubmit = async (e) => {
-    // console.log(999);
     e.preventDefault();
-    if (!data.name || !data.gmail || !data.subject ||!data.content){
+    if (!data.name || !data.gmail || !data.subject || !data.content) {
       const notify = () => toast('PLEASE FILL ALL REQUIRED CREDENTIALS');
       notify();
-      return};
-      
-      try {
-        const url = `${rootUrl}/api/v1/report`;
-        // const url = `/api/v1/auth/login`;
-        const res=await fetch(url, {
-          method: 'POST',
-          headers: {
-            'Content-type': 'application/json',
-          },
-          body: JSON.stringify(data),
-        });
-        const notify = () => toast('MAIL SENT SUCCESSFULLY');
+      return
+    };
+
+    try {
+      const url = `${rootUrl}/api/v1/report`;
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      const notify = () => toast('MAIL SENT SUCCESSFULLY');
       notify();
-      } catch (error) {
+    } catch (error) {
       const notify = () => toast(error);
       notify();
       console.log(error);
     }
   };
-  const isActive=false;
+  const isActive = false;
   return (
     <div className="App" >
       <div className="from-box">
-        <form className={isActive?"hide":"from-box"} method ="POST">
+        <form className={isActive ? "hide" : "from-box"} method="POST">
           <label className='form-label'>
             Your Name :
             <br />
@@ -52,7 +50,7 @@ function Sender() {
               type="text"
               value={data.name}
               placeholder='Enter Your data...'
-              onChange={(e) => { setName(ev => ({ ...ev, name: e.target.value }))}}
+              onChange={(e) => { setName(ev => ({ ...ev, name: e.target.value })) }}
               className='form-input' />
           </label>
           <br />
@@ -112,7 +110,7 @@ function Sender() {
               textAlign: "center"
             },
           }}
-          />
+        />
       </div>
 
     </div>
